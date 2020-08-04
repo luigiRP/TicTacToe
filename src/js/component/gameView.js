@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import HeaderGame from "./headerGame.js";
 
@@ -16,6 +16,10 @@ export default function GameView(props) {
 	const [iconX, setIcon] = useState("X");
 	const [namePlayer, setPlayer] = useState(props.p1);
 
+	useEffect(() => {
+		checkWinner();
+	});
+
 	function insertIcon(icon) {
 		if (icon == "") {
 			setTurn(!turn);
@@ -31,11 +35,36 @@ export default function GameView(props) {
 			return icon;
 		}
 	}
+	function checkWinner() {
+		if (icon1 == icon2 && icon1 == icon3 && icon1 != "") {
+			let winner = document.querySelector("#winner");
+			let turnMessage = document.querySelector("#turnMessage");
+			turnMessage.innerHTML = " ";
+			if (namePlayer == props.p1) {
+				winner.innerHTML = "Gano " + props.p2 + "!";
+			} else {
+				winner.innerHTML = "Gano " + props.p1 + "!";
+			}
+		}
+		if (icon4 == icon5 && icon5 == icon6 && icon4 != "") {
+			let winner = document.querySelector("#winner");
+			let turnMessage = document.querySelector("#turnMessage");
+			turnMessage.innerHTML = " ";
+			if (namePlayer == props.p1) {
+				winner.innerHTML = "Gano " + props.p2 + "!";
+			} else {
+				winner.innerHTML = "Gano " + props.p1 + "!";
+			}
+		}
+	}
 
 	return (
 		<Fragment>
 			<HeaderGame />
-			<h2 className="text-white text-center font-weight-bold my-5">
+			<h1 id="winner" className="text-success text-center" />
+			<h2
+				className="text-white text-center font-weight-bold my-5"
+				id="turnMessage">
 				Es el turno de {namePlayer}!
 			</h2>
 			<div className="container mt-5 pt-5">
@@ -49,46 +78,62 @@ export default function GameView(props) {
 					</div>
 					<div
 						className="squares d-flex align-items-center justify-content-center"
-						onClick={() => setIcon2(insertIcon(icon2))}>
+						onClick={() => {
+							setIcon2(insertIcon(icon2));
+						}}>
 						<p>{icon2}</p>
 					</div>
 					<div
 						className="squares d-flex align-items-center justify-content-center"
-						onClick={() => setIcon3(insertIcon(icon3))}>
+						onClick={() => {
+							setIcon3(insertIcon(icon3));
+						}}>
 						<p>{icon3}</p>
 					</div>
 				</div>
 				<div className="row d-flex justify-content-center">
 					<div
 						className="squares d-flex align-items-center justify-content-center"
-						onClick={() => setIcon4(insertIcon(icon4))}>
+						onClick={() => {
+							setIcon4(insertIcon(icon4));
+						}}>
 						<p>{icon4}</p>
 					</div>
 					<div
 						className="squares d-flex align-items-center justify-content-center"
-						onClick={() => setIcon5(insertIcon(icon5))}>
+						onClick={() => {
+							setIcon5(insertIcon(icon5));
+						}}>
 						<p>{icon5}</p>
 					</div>
 					<div
 						className="squares d-flex align-items-center justify-content-center"
-						onClick={() => setIcon6(insertIcon(icon6))}>
+						onClick={() => {
+							setIcon6(insertIcon(icon6));
+						}}>
 						<p>{icon6}</p>
 					</div>
 				</div>
 				<div className="row d-flex justify-content-center">
 					<div
 						className="squares d-flex align-items-center justify-content-center"
-						onClick={() => setIcon7(insertIcon(icon7))}>
+						onClick={() => {
+							setIcon7(insertIcon(icon7));
+						}}>
 						<p>{icon7}</p>
 					</div>
 					<div
 						className="squares d-flex align-items-center justify-content-center"
-						onClick={() => setIcon8(insertIcon(icon8))}>
+						onClick={() => {
+							setIcon8(insertIcon(icon8));
+						}}>
 						<p>{icon8}</p>
 					</div>
 					<div
 						className="squares d-flex align-items-center justify-content-center"
-						onClick={() => setIcon9(insertIcon(icon9))}>
+						onClick={() => {
+							setIcon9(insertIcon(icon9));
+						}}>
 						<p>{icon9}</p>
 					</div>
 				</div>

@@ -56,6 +56,66 @@ export default function GameView(props) {
 				winner.innerHTML = "Gano " + props.p1 + "!";
 			}
 		}
+		if (icon7 == icon8 && icon8 == icon9 && icon7 != "") {
+			let winner = document.querySelector("#winner");
+			let turnMessage = document.querySelector("#turnMessage");
+			turnMessage.innerHTML = " ";
+			if (namePlayer == props.p1) {
+				winner.innerHTML = "Gano " + props.p2 + "!";
+			} else {
+				winner.innerHTML = "Gano " + props.p1 + "!";
+			}
+		}
+		if (icon1 == icon4 && icon4 == icon7 && icon1 != "") {
+			let winner = document.querySelector("#winner");
+			let turnMessage = document.querySelector("#turnMessage");
+			turnMessage.innerHTML = " ";
+			if (namePlayer == props.p1) {
+				winner.innerHTML = "Gano " + props.p2 + "!";
+			} else {
+				winner.innerHTML = "Gano " + props.p1 + "!";
+			}
+		}
+		if (icon2 == icon5 && icon5 == icon8 && icon2 != "") {
+			let winner = document.querySelector("#winner");
+			let turnMessage = document.querySelector("#turnMessage");
+			turnMessage.innerHTML = " ";
+			if (namePlayer == props.p1) {
+				winner.innerHTML = "Gano " + props.p2 + "!";
+			} else {
+				winner.innerHTML = "Gano " + props.p1 + "!";
+			}
+		}
+		if (icon3 == icon6 && icon6 == icon9 && icon3 != "") {
+			let winner = document.querySelector("#winner");
+			let turnMessage = document.querySelector("#turnMessage");
+			turnMessage.innerHTML = " ";
+			if (namePlayer == props.p1) {
+				winner.innerHTML = "Gano " + props.p2 + "!";
+			} else {
+				winner.innerHTML = "Gano " + props.p1 + "!";
+			}
+		}
+		if (icon1 == icon5 && icon5 == icon9 && icon1 != "") {
+			let winner = document.querySelector("#winner");
+			let turnMessage = document.querySelector("#turnMessage");
+			turnMessage.innerHTML = " ";
+			if (namePlayer == props.p1) {
+				winner.innerHTML = "Gano " + props.p2 + "!";
+			} else {
+				winner.innerHTML = "Gano " + props.p1 + "!";
+			}
+		}
+		if (icon3 == icon5 && icon5 == icon6 && icon3 != "") {
+			let winner = document.querySelector("#winner");
+			let turnMessage = document.querySelector("#turnMessage");
+			turnMessage.innerHTML = " ";
+			if (namePlayer == props.p1) {
+				winner.innerHTML = "Gano " + props.p2 + "!";
+			} else {
+				winner.innerHTML = "Gano " + props.p1 + "!";
+			}
+		}
 	}
 
 	return (

@@ -4,6 +4,7 @@ import HeaderGame from "./headerGame.js";
 
 export default function GameView(props) {
 	const [turn, setTurn] = useState(false);
+	let [draw, setDraw] = useState(0);
 	const [icon1, setIcon1] = useState("");
 	const [icon2, setIcon2] = useState("");
 	const [icon3, setIcon3] = useState("");
@@ -21,6 +22,8 @@ export default function GameView(props) {
 	});
 
 	function insertIcon(icon) {
+		setDraw(draw + 1);
+
 		if (icon == "") {
 			setTurn(!turn);
 			if (turn) {
@@ -35,10 +38,27 @@ export default function GameView(props) {
 			return icon;
 		}
 	}
+	function startOver() {
+		let turnMessage = document.querySelector("#turnMessage");
+		turnMessage.innerHTML = "Es el turno de " + namePlayer;
+		setDraw(0);
+		setIcon1("");
+		setIcon2("");
+		setIcon3("");
+		setIcon4("");
+		setIcon5("");
+		setIcon6("");
+		setIcon7("");
+		setIcon8("");
+		setIcon9("");
+	}
 	function checkWinner() {
+		let isWinner = false;
+
 		if (icon1 == icon2 && icon1 == icon3 && icon1 != "") {
 			let winner = document.querySelector("#winner");
 			let turnMessage = document.querySelector("#turnMessage");
+			isWinner = true;
 			turnMessage.innerHTML = " ";
 			if (namePlayer == props.p1) {
 				winner.innerHTML = "Gano " + props.p2 + "!";
@@ -46,7 +66,9 @@ export default function GameView(props) {
 				winner.innerHTML = "Gano " + props.p1 + "!";
 			}
 		}
+
 		if (icon4 == icon5 && icon5 == icon6 && icon4 != "") {
+			isWinner = true;
 			let winner = document.querySelector("#winner");
 			let turnMessage = document.querySelector("#turnMessage");
 			turnMessage.innerHTML = " ";
@@ -56,7 +78,9 @@ export default function GameView(props) {
 				winner.innerHTML = "Gano " + props.p1 + "!";
 			}
 		}
+
 		if (icon7 == icon8 && icon8 == icon9 && icon7 != "") {
+			isWinner = true;
 			let winner = document.querySelector("#winner");
 			let turnMessage = document.querySelector("#turnMessage");
 			turnMessage.innerHTML = " ";
@@ -66,7 +90,9 @@ export default function GameView(props) {
 				winner.innerHTML = "Gano " + props.p1 + "!";
 			}
 		}
+
 		if (icon1 == icon4 && icon4 == icon7 && icon1 != "") {
+			isWinner = true;
 			let winner = document.querySelector("#winner");
 			let turnMessage = document.querySelector("#turnMessage");
 			turnMessage.innerHTML = " ";
@@ -76,7 +102,9 @@ export default function GameView(props) {
 				winner.innerHTML = "Gano " + props.p1 + "!";
 			}
 		}
+
 		if (icon2 == icon5 && icon5 == icon8 && icon2 != "") {
+			isWinner = true;
 			let winner = document.querySelector("#winner");
 			let turnMessage = document.querySelector("#turnMessage");
 			turnMessage.innerHTML = " ";
@@ -86,7 +114,9 @@ export default function GameView(props) {
 				winner.innerHTML = "Gano " + props.p1 + "!";
 			}
 		}
+
 		if (icon3 == icon6 && icon6 == icon9 && icon3 != "") {
+			isWinner = true;
 			let winner = document.querySelector("#winner");
 			let turnMessage = document.querySelector("#turnMessage");
 			turnMessage.innerHTML = " ";
@@ -96,7 +126,9 @@ export default function GameView(props) {
 				winner.innerHTML = "Gano " + props.p1 + "!";
 			}
 		}
+
 		if (icon1 == icon5 && icon5 == icon9 && icon1 != "") {
+			isWinner = true;
 			let winner = document.querySelector("#winner");
 			let turnMessage = document.querySelector("#turnMessage");
 			turnMessage.innerHTML = " ";
@@ -106,7 +138,9 @@ export default function GameView(props) {
 				winner.innerHTML = "Gano " + props.p1 + "!";
 			}
 		}
+
 		if (icon3 == icon5 && icon5 == icon6 && icon3 != "") {
+			isWinner = true;
 			let winner = document.querySelector("#winner");
 			let turnMessage = document.querySelector("#turnMessage");
 			turnMessage.innerHTML = " ";
@@ -115,6 +149,12 @@ export default function GameView(props) {
 			} else {
 				winner.innerHTML = "Gano " + props.p1 + "!";
 			}
+		}
+		if (draw == 9 && !isWinner) {
+			let winner = document.querySelector("#winner");
+			let turnMessage = document.querySelector("#turnMessage");
+			turnMessage.innerHTML = " ";
+			winner.innerHTML = "Gano la 👵!";
 		}
 	}
 
@@ -127,7 +167,7 @@ export default function GameView(props) {
 				id="turnMessage">
 				Es el turno de {namePlayer}!
 			</h2>
-			<div className="container mt-5 pt-5">
+			<div className="container pt-5">
 				<div className="row d-flex justify-content-center">
 					<div
 						className="squares d-flex align-items-center justify-content-center"
@@ -196,6 +236,15 @@ export default function GameView(props) {
 						}}>
 						<p>{icon9}</p>
 					</div>
+				</div>
+				<div className="row d-flex justify-content-center my-3">
+					<button
+						className="btn btn-primary mx-auto"
+						onClick={() => {
+							startOver();
+						}}>
+						Start Over!
+					</button>
 				</div>
 			</div>
 		</Fragment>
